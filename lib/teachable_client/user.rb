@@ -29,5 +29,16 @@ module TeachableClient
       new(attributes)
     end
 
+    def self.authenticate(email:, password:)
+      response = Faraday.post("#{BASE_URL}/users/sign_in.json", {
+        user: {
+          email: email,
+          password: password
+        }
+      })
+      attributes = JSON.parse(response.body)
+      new(attributes)
+    end
+
   end
 end
