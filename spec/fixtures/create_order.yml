@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://fast-bayou-75985.herokuapp.com/api/orders.json?user_email=foo@foo.com&user_token=iheCDXV2yDjKsrvywZXr
+    body:
+      encoding: UTF-8
+      string: order%5Bemail%5D=foo%40foo.com&order%5Bspecial_instructions%5D=do+it+now%21&order%5Btotal%5D=4.0&order%5Btotal_quantity%5D=4
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7842cd6fcdbb95829ce0675dee80beee"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 18ff259d-134d-4ee3-a020-92c430b276cb
+      X-Runtime:
+      - '0.037128'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.4/2015-12-16)
+      Date:
+      - Thu, 27 Jul 2017 01:24:43 GMT
+      Content-Length:
+      - '209'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"id":480,"number":"19b4c85b74dfcfd0","total":"4.0","total_quantity":4,"email":"foo@foo.com","special_instructions":"do
+        it now!","created_at":"2017-07-27T01:24:43.172Z","updated_at":"2017-07-27T01:24:43.172Z"}'
+    http_version: 
+  recorded_at: Thu, 27 Jul 2017 01:24:43 GMT
+recorded_with: VCR 3.0.3
