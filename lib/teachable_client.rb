@@ -1,3 +1,5 @@
 require "teachable_client/version"
 require "teachable_client/user"
 require "teachable_client/order"
+require "teachable_client/error"
+require "teachable_client/response"

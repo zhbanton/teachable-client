@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://fast-bayou-75985.herokuapp.com/api/orders.json?user_email=foo@foo.com&user_token=iheCDXV2yDjKsrvywZXr
+    body:
+      encoding: UTF-8
+      string: order%5Bemail%5D=foo%40foo.com&order%5Bspecial_instructions%5D=do+it+now%21&order%5Btotal%5D&order%5Btotal_quantity%5D=4
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: 'Unprocessable Entity '
+    headers:
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 8eef05cd-eb2c-412f-bd5c-f909410e848c
+      X-Runtime:
+      - '0.039570'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.4/2015-12-16)
+      Date:
+      - Thu, 27 Jul 2017 04:00:22 GMT
+      Content-Length:
+      - '58'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"id":"total","title":"Total can''t be blank"}]}'
+    http_version: 
+  recorded_at: Thu, 27 Jul 2017 04:00:22 GMT
+recorded_with: VCR 3.0.3

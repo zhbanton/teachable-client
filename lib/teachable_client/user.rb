@@ -20,57 +20,52 @@ module TeachableClient
     end
 
     def self.register(email:, password:, password_confirmation:)
-      response = Faraday.post("#{BASE_URL}/users.json", {
+       response = Response.new(Faraday.post("#{BASE_URL}/users.json", {
         user: {
           email: email,
           password: password,
           password_confirmation: password_confirmation
         }
-      })
-      attributes = JSON.parse(response.body)
-      new(attributes)
+      }))
+      new(response.body)
     end
 
     def self.authenticate(email:, password:)
-      response = Faraday.post("#{BASE_URL}/users/sign_in.json", {
+      response = Response.new(Faraday.post("#{BASE_URL}/users/sign_in.json", {
         user: {
           email: email,
           password: password
         }
-      })
-      attributes = JSON.parse(response.body)
-      new(attributes)
+      }))
+      new(response.body)
     end
 
     def current_user
-      response = Faraday.get("#{BASE_URL}/api/users/current_user/edit.json?#{authentication_params}")
-      attributes = JSON.parse(response.body)
-      self.class.new(attributes)
+      response = Response.new(Faraday.get("#{BASE_URL}/api/users/current_user/edit.json?#{authentication_params}"))
+      self.class.new(response.body)
     end
 
     def create_order(total:, total_quantity:, special_instructions:)
-      response = Faraday.post("#{BASE_URL}/api/orders.json?#{authentication_params}", {
+      response = Response.new(Faraday.post("#{BASE_URL}/api/orders.json?#{authentication_params}", {
         order: {
           total: total,
           total_quantity: total_quantity,
           email: @email,
           special_instructions: special_instructions
         }
-      })
-      attributes = JSON.parse(response.body)
-      TeachableClient::Order.new(attributes)
+      }))
+      Order.new(response.body)
     end
 
     def orders
-      response = Faraday.get("#{BASE_URL}/api/orders.json?#{authentication_params}")
-      raw_orders = JSON.parse(response.body)
-      raw_orders.map do |attributes|
-        TeachableClient::Order.new(attributes)
+      response = Response.new(Faraday.get("#{BASE_URL}/api/orders.json?#{authentication_params}"))
+      response.body.map do |attributes|
+        Order.new(attributes)
       end
     end
 
     def destroy_order(order_id)
-      response = Faraday.delete("#{BASE_URL}/api/orders/#{order_id}.json?#{authentication_params}")
+      response = Response.new(Faraday.delete("#{BASE_URL}/api/orders/#{order_id}.json?#{authentication_params}"))
       response.status == 204
     end
 
