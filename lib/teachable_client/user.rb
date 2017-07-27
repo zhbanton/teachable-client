@@ -7,7 +7,7 @@ module TeachableClient
     attr_reader :id, :name, :nickname, :image, :email, :tokens, :created_at, :updated_at
 
     def initialize(attributes)
-      @id = attributes['id']
+      @id = attributes['id'].to_i
       @name = attributes['name']
       @nickname = attributes['nickname']
       @image = attributes['image']
@@ -38,6 +38,12 @@ module TeachableClient
       })
       attributes = JSON.parse(response.body)
       new(attributes)
+    end
+
+    def current_user
+      response = Faraday.get("#{BASE_URL}/api/users/current_user/edit.json?user_email=#{@email}&user_token=#{@tokens}")
+      attributes = JSON.parse(response.body)
+      self.class.new(attributes)
     end
 
   end
