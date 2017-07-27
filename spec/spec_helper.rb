@@ -1,5 +1,8 @@
 require "bundler/setup"
 require "teachable_client"
+require "webmock/rspec"
+require "vcr"
+require "pry"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,4 +14,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/fixtures"
+  c.hook_into :webmock
 end

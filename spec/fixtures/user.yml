@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://fast-bayou-75985.herokuapp.com/users.json
+    body:
+      encoding: UTF-8
+      string: user%5Bemail%5D=foo%40bar.com&user%5Bpassword%5D=password&user%5Bpassword_confirmation%5D=password
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: 'Created '
+    headers:
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Location:
+      - https://fast-bayou-75985.herokuapp.com/
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7ccd1c3192277a8293caa9b0b91e341e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 94a15854-4792-485c-9899-f4af3b9d136c
+      X-Runtime:
+      - '0.118972'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.4/2015-12-16)
+      Date:
+      - Wed, 26 Jul 2017 23:57:53 GMT
+      Content-Length:
+      - '185'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"id":309,"name":null,"nickname":null,"image":null,"email":"foo@bar.com","tokens":"zr57JrmkUiLxR-xTYwbV","created_at":"2017-07-26T23:57:53.786Z","updated_at":"2017-07-26T23:57:53.796Z"}'
+    http_version: 
+  recorded_at: Wed, 26 Jul 2017 23:57:53 GMT
+recorded_with: VCR 3.0.3
